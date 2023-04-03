@@ -10,7 +10,7 @@ export function Text(props: TextProps) {
 
 	const { text, animation } = props;
 
-	const { cx, css } = useStyles();
+	const { cx } = useStyles();
 
 	return (
 		<div

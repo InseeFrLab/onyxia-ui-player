@@ -1,11 +1,11 @@
 
 import type { ReactNode } from "react";
-import { useStyles } from "../../theme";
+import { useStyles, Text } from "../../theme";
 
 
 export type MusicCredentialsProps = {
-	title: ReactNode;
-	band: ReactNode;
+	title: NonNullable<ReactNode>;
+	band: NonNullable<ReactNode>;
 };
 
 export function MusicCredentials(props: MusicCredentialsProps) {
@@ -29,33 +29,31 @@ export function MusicCredentials(props: MusicCredentialsProps) {
 					color: theme.colors.useCases.typography.textTertiary
 				})}
 			>
-				<p
+				<Text
+					typo="body 1"
 					className={
 						cx(
 						css({
 							margin: 0,
 							textTransform: "uppercase",
-							fontSize: "3.5rem",
-							lineHeight: "4rem",
 						})
 						)
 					}
 				>
 					{title}
-				</p>
-				<p
+				</Text>
+				<Text
+					typo="body 1"
 					className={
 						css({
 							margin: 0,
 							marginTop: theme.spacing(5),
 							textTransform: "uppercase",
-							fontSize: "3.5rem",
-							lineHeight: "4rem",
 						})
 					}
 				>
 					{band}
-				</p>
+				</Text>
 			</div>
 		</div>
 	);

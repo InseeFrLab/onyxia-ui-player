@@ -14,7 +14,7 @@ export function BulletPoints(props: BulletPointsProps) {
 
 	const { bulletPoints, currentIndex, spacing } = props;
 
-	const { cx, css } = useStyles();
+	const { cx, css, theme } = useStyles();
 
 	return (
 		<div
@@ -36,7 +36,7 @@ export function BulletPoints(props: BulletPointsProps) {
 								i===currentIndex &&  animation,
 								css({
 									margin: 0,
-									marginBottom: bulletPoints.length - 1 === i ? undefined : (spacing ?? "3rem"),
+									marginBottom: bulletPoints.length - 1 === i ? undefined : (spacing ?? (theme.typography.rootFontSizePx * 3)),
 									visibility: i <= currentIndex ? undefined : "hidden"
 								})
 							)
