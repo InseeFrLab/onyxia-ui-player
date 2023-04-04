@@ -1,6 +1,6 @@
 
 
-import { useReducer, useEffect, EffectCallback } from "react";
+import { useReducer, useEffect, EffectCallback, useState } from "react";
 import type { ScreenProps } from "./Screen";
 import { Screen } from "./Screen";
 import { GlobalStyles } from "onyxia-ui/tss";
@@ -104,7 +104,6 @@ function BulletPointsDsfrPlayer(props: PlayerProps.Item.BulletPoints) {
 
 	return (
 			<Screen
-				key={index}
 				bulletPoints={bulletPoints}
 				currentIndex={index}
 				{...rest}

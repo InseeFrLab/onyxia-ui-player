@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { ImageProps } from "./Image";
 import { Image } from "./Image";
 import type { MusicCredentialsProps } from "./MusicCredentials";
@@ -23,6 +24,8 @@ export namespace ScreenProps {
 }
 
 export function Screen(props: ScreenProps) {
+
+
 	switch (props.type) {
 		case "image": return <Image {...props} />;
 		case "music credentials": return <MusicCredentials {...props} />;

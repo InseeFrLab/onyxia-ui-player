@@ -23,9 +23,21 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     </ThemeProvider>
 );
 
+function Focus(props: { children: React.ReactNode; color: string; }){
+
+    const { children, color } = props;
+
+    const { css, theme } = useStyles();
+
+    return (
+        <span className={css({ color })} >{children}</span>
+    );
+    
+}
+
 function App() {
 
-    const { theme } = useStyles();
+    const { css, theme } = useStyles();
 
     const { setIsDarkModeEnabled } = useIsDarkModeEnabled();
 
@@ -40,7 +52,7 @@ function App() {
 
     return (
         <Player
-            specificIndex={5}
+            specificIndex={10}
             items={[
                 {
                     type: "text",
@@ -75,7 +87,7 @@ function App() {
                             duration: 500
                         },
                         {
-                            text: "for all your data needs",
+                            text: <>for all your <Focus color={theme.colors.useCases.typography.textFocus}>data</Focus> needs</>,
                             animation: "animate__fadeIn",
                             duration: 1800
                         },
@@ -83,31 +95,32 @@ function App() {
                 },
                 // Video
                 {
+                    type: "text",
+                    text: "Built on top standards",
+                    duration: 1000
+                },
+                {
                     type: "bullet points",
                     bulletPoints: [
                         {
-                            text: "Built on top standards",
-                            duration: 1000
-                        },
-                        {
                             text: "Kubernetes",
-                            duration: 500
+                            duration: 400
                         },
                         {
                             text: "Helm",
-                            duration: 500
+                            duration: 400
                         },
                         {
                             text: "S3",
-                            duration: 500
+                            duration: 400
                         },
                         {
                             text: "OIDC",
-                            duration: 500
+                            duration: 400
                         },
                         {
                             text: "Vault",
-                            duration: 500
+                            duration: 1800
                         },
                     ]
                 },
@@ -116,33 +129,37 @@ function App() {
                     bulletPoints: [
                         {
                             text: "An intuitive UI...",
-                            duration: 500
+                            duration: 1000
                         },
                         {
-                            text: "...that show you what's going on",
+                            text: "...that shows what's going on",
                             animation: "animate__fadeIn",
                             duration: 1800
                         }
                     ],
                 },
                 {
+                    type: "text",
+                    text: "Allocate computing resources",
+                    duration: 1000
+                },
+                {
                     type: "bullet points",
                     bulletPoints: [
                         {
-                            text: "Enable your data team to require needed resources",
-                            duration: 1000
-                        },
-                        {
                             text: "CPU",
-                            duration: 500
-                        },
-                        {
-                            text: "GPU",
-                            duration: 500
+                            duration: 500,
+                            animation: "animate__pulse"
                         },
                         {
                             text: "RAM",
-                            duration: 500
+                            duration: 500,
+                            animation: "animate__pulse"
+                        },
+                        {
+                            text: <Focus color={theme.colors.useCases.typography.textFocus}>GPU</Focus>,
+                            duration: 1000,
+                            animation: "animate__pulse"
                         },
                     ],
                 },
@@ -187,7 +204,7 @@ function App() {
                     type: "text",
                     text: "Or...",
                     animation: "animate__fadeIn",
-                    duration: 300
+                    duration: 1000
                 },
                 {
                     type: "bullet points",
@@ -198,7 +215,7 @@ function App() {
                         },
                         {
                             text: "deploy on premise",
-                            duration: 500
+                            duration: 1000
                         },
                         {
                             text: "and unleash the full potential of your infrastructure",
@@ -252,18 +269,7 @@ function App() {
                     duration: 3000,
                     imgUrl: onyxiaLogoUrl,
                     width: 200,
-                },
-                {
-                    type: "music credentials",
-                    title: "",
-                    band: "Music by Migu",
-                    duration: 2000,
-                    effect: () => {
-
-                        //setIsDarkModeEnabled(true);
-
-                    }
-                },
+                }
             ]}
         />
     );
