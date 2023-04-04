@@ -35,7 +35,7 @@ export function BulletPoints(props: BulletPointsProps) {
 								i===currentIndex &&  animation,
 								css({
 									margin: 0,
-									marginBottom: bulletPoints.length - 1 === i ? undefined : (spacing ?? (theme.typography.rootFontSizePx * 3)),
+									marginBottom: bulletPoints.length - 1 === i ? undefined : (spacing ?? (theme.typography.rootFontSizePx * 0.7)),
 									visibility: i <= currentIndex ? undefined : "hidden"
 								})
 							)

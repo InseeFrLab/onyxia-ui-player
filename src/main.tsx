@@ -27,8 +27,6 @@ function App() {
 
     const { theme } = useStyles();
 
-    console.log(theme.typography.rootFontSizePx);
-
     const { setIsDarkModeEnabled } = useIsDarkModeEnabled();
 
     useEffect(
@@ -42,12 +40,12 @@ function App() {
 
     return (
         <Player
-            specificIndex={6}
+            specificIndex={5}
             items={[
                 {
                     type: "text",
                     text: "INSEE",
-                    duration: 300
+                    duration: 400
                 },
                 {
                     type: "text",
@@ -57,7 +55,7 @@ function App() {
                 {
                     type: "text",
                     text: "CodeGouv 🇫🇷",
-                    duration: 300
+                    duration: 400
                 },
                 {
                     type: "text",
@@ -82,7 +80,6 @@ function App() {
                             duration: 1800
                         },
                     ],
-                    spacing: "2rem",
                 },
                 // Video
                 {
@@ -127,7 +124,6 @@ function App() {
                             duration: 1800
                         }
                     ],
-                    spacing: "2rem",
                 },
                 {
                     type: "bullet points",
@@ -149,7 +145,6 @@ function App() {
                             duration: 500
                         },
                     ],
-                    spacing: "2rem",
                 },
                 // Video
                 {
@@ -165,7 +160,6 @@ function App() {
                             duration: 1800
                         },
                     ],
-                    spacing: "2rem",
                 },
                 // Video
                 {
@@ -188,7 +182,6 @@ function App() {
                             duration: 1800
                         }
                     ],
-                    spacing: "2rem",
                 },
                 {
                     type: "text",
@@ -212,7 +205,6 @@ function App() {
                             duration: 1800
                         },
                     ],
-                    spacing: "2rem",
                 },
 
 
@@ -232,7 +224,6 @@ function App() {
                             duration: 1800
                         },
                     ],
-                    spacing: "2rem",
                 },
 
                 // Video
