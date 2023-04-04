@@ -3,7 +3,7 @@
 import { useReducer, useEffect, EffectCallback } from "react";
 import type { ScreenProps } from "./Screen";
 import { Screen } from "./Screen";
-import { GlobalStyles } from "tss-react";
+import { GlobalStyles } from "onyxia-ui/tss";
 
 
 export type PlayerProps = {
@@ -71,9 +71,7 @@ export function Player(props: PlayerProps) {
 		<>
 			<GlobalStyles
 				styles={{
-					body: {
-						margin: 0
-					}
+					body: { margin: 0 }
 				}}
 			/>
 			{item.type === "bullet points" ? <BulletPointsDsfrPlayer key={index} {...item} /> : <Screen key={index} {...item} />}

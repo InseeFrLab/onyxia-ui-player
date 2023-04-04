@@ -22,11 +22,10 @@ export function BulletPoints(props: BulletPointsProps) {
 				height: "100%",
 				display: "flex",
 				justifyContent: "center",
-				alignItems: "center",
+				alignItems: "center"
 			})}
 		>
 			<div style={{ textAlign: "center" }} >
-
 				{bulletPoints.map(({ text, animation}, i) =>
 					<Text
 						typo="page heading"

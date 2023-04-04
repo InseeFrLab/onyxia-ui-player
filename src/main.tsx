@@ -2,12 +2,10 @@
 import { useEffect } from "react";
 import ReactDOM from "react-dom/client"
 import "animate.css";
-import CircularProgress from '@mui/material/CircularProgress';
 import { Player } from "./Player";
 import { useStyles, ThemeProvider } from "./theme";
 import { useIsDarkModeEnabled } from "onyxia-ui";
-
-
+import onyxiaLogoUrl from "./onyxia-logo.png";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <ThemeProvider
@@ -22,12 +20,12 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         }
     >
         <App />
-    </ThemeProvider>,
+    </ThemeProvider>
 );
 
 function App() {
 
-    const { css, theme } = useStyles();
+    const { theme } = useStyles();
 
     console.log(theme.typography.rootFontSizePx);
 
@@ -44,26 +42,26 @@ function App() {
 
     return (
         <Player
-            //specificIndex={6}
+            specificIndex={6}
             items={[
                 {
                     type: "text",
-                    text: "The",
+                    text: "INSEE",
                     duration: 300
                 },
                 {
                     type: "text",
-                    text: "CodeGouv",
-                    duration: 500
-                },
-                {
-                    type: "text",
-                    text: "team",
+                    text: "&",
                     duration: 300
                 },
                 {
                     type: "text",
-                    text: "is",
+                    text: "CodeGouv 🇫🇷",
+                    duration: 300
+                },
+                {
+                    type: "text",
+                    text: "are",
                     duration: 300
                 },
                 {
@@ -75,11 +73,56 @@ function App() {
                     type: "bullet points",
                     bulletPoints: [
                         {
-                            text: "The 🇫🇷 Design System",
+                            text: "A cutting-edge solution",
                             duration: 500
                         },
                         {
-                            text: "React library",
+                            text: "for all your data needs",
+                            animation: "animate__fadeIn",
+                            duration: 1800
+                        },
+                    ],
+                    spacing: "2rem",
+                },
+                // Video
+                {
+                    type: "bullet points",
+                    bulletPoints: [
+                        {
+                            text: "Built on top standards",
+                            duration: 1000
+                        },
+                        {
+                            text: "Kubernetes",
+                            duration: 500
+                        },
+                        {
+                            text: "Helm",
+                            duration: 500
+                        },
+                        {
+                            text: "S3",
+                            duration: 500
+                        },
+                        {
+                            text: "OIDC",
+                            duration: 500
+                        },
+                        {
+                            text: "Vault",
+                            duration: 500
+                        },
+                    ]
+                },
+                {
+                    type: "bullet points",
+                    bulletPoints: [
+                        {
+                            text: "An intuitive UI...",
+                            duration: 500
+                        },
+                        {
+                            text: "...that show you what's going on",
                             animation: "animate__fadeIn",
                             duration: 1800
                         }
@@ -87,197 +130,137 @@ function App() {
                     spacing: "2rem",
                 },
                 {
-                    type: "text",
-                    text: (
-                        <>
-                            you've all been waiting for&nbsp;&nbsp;
-                            <CircularProgress
-                                size={theme.typography.rootFontSizePx}
-                                color="inherit"
-                                className={css({
-                                    "overflow": "visible",
-                                    "& svg": {
-                                        overflow: "visible"
-                                    },
-                                    "& circle": {
-                                        strokeWidth: "7px"
-                                    }
-                                })}
-                            />
-                        </>
-                    ),
-                    duration: 2000
+                    type: "bullet points",
+                    bulletPoints: [
+                        {
+                            text: "Enable your data team to require needed resources",
+                            duration: 1000
+                        },
+                        {
+                            text: "CPU",
+                            duration: 500
+                        },
+                        {
+                            text: "GPU",
+                            duration: 500
+                        },
+                        {
+                            text: "RAM",
+                            duration: 500
+                        },
+                    ],
+                    spacing: "2rem",
                 },
+                // Video
                 {
                     type: "bullet points",
                     bulletPoints: [
                         {
-                            text: "TypeScript first",
-                            duration: 1000
+                            text: "Horizontal scaling",
+                            duration: 500
                         },
                         {
-                            text: <><code>fr-*</code> classes autocompletion</>,
-                            duration: 1000
-                        },
-                        {
-                            text: "Always up to date",
-                            duration: 1000
-                        }
-                    ]
-                },
-                {
-                    type: "bullet points",
-                    bulletPoints: [
-                        {
-                            text: "Perfect dark mode integration",
-                            duration: 1000
-                        },
-                        {
-                            text: "No more white flashes",
+                            text: "Spawn new containers on demand",
                             animation: "animate__fadeIn",
-                            duration: 1500
+                            duration: 1800
+                        },
+                    ],
+                    spacing: "2rem",
+                },
+                // Video
+                {
+                    type: "bullet points",
+                    bulletPoints: [
+                        {
+                            text: "Deploy anywhere",
+                            duration: 500
+                        },
+                        {
+                            text: "OVH",
+                            duration: 500
+                        },
+                        {
+                            text: "AWS",
+                            duration: 500
+                        },
+                        {
+                            text: "Azure",
+                            duration: 1800
                         }
                     ],
                     spacing: "2rem",
-                    effect: () => {
-
-                        setTimeout(() => {
-
-                            setIsDarkModeEnabled(isDark => !isDark);
-
-                        }, 700);
-
-
-                        return () => {
-
-                            setIsDarkModeEnabled(isDark => !isDark);
-
-                        };
-                    }
-
-                },
-                {
-                    type: "bullet points",
-                    bulletPoints: [
-                        {
-                            text: "Great documentation",
-                            duration: 1000
-                        },
-                        {
-                            text: "Components live sandboxes",
-                            duration: 1000
-                        }
-                    ]
-
                 },
                 {
                     type: "text",
-                    text: "Unmatched developer experience",
+                    text: "Or...",
                     animation: "animate__fadeIn",
-                    duration: 1500
+                    duration: 300
                 },
                 {
                     type: "bullet points",
                     bulletPoints: [
                         {
-                            text: "works with ...",
+                            text: "Break free from GAFAM hyperscalers",
+                            duration: 1000
+                        },
+                        {
+                            text: "deploy on premise",
                             duration: 500
                         },
                         {
-                            text: "Create React App",
-                            animation: "animate__fadeIn",
-                            duration: 500
+                            text: "and unleash the full potential of your infrastructure",
+                            duration: 1800
                         },
-                        {
-                            text: "Vite",
-                            animation: "animate__fadeIn",
-                            duration: 500
-                        },
-                        {
-                            text: "Next.js",
-                            animation: "animate__fadeIn",
-                            duration: 1500
-                        },
+                    ],
+                    spacing: "2rem",
+                },
 
-                    ]
-                },
+
                 {
                     type: "bullet points",
                     bulletPoints: [
                         {
-                            text: "Server Side Rendering",
-                            duration: 1000
-                        },
-                        {
-                            text: "JavaScript not required",
-                            animation: "animate__fadeIn",
-                            duration: 1100
-                        },
-                    ]
-                },
-                {
-                    type: "bullet points",
-                    bulletPoints: [
-                        {
-                            text: "Auto import of icons",
-                            duration: 1000
-                        },
-                        {
-                            text: "Remixicon support",
-                            duration: 1000
-                        }
-                    ]
-                },
-                {
-                    type: "bullet points",
-                    bulletPoints: [
-                        {
-                            text: "Routing libraries integration",
-                            duration: 700
-                        },
-                        {
-                            text: "React Router",
-                            animation: "animate__fadeIn",
+                            text: "Customize your instance",
                             duration: 500
                         },
                         {
-                            text: "TanStack Router",
-                            animation: "animate__fadeIn",
+                            text: "Extends the built-in catalog of tools",
                             duration: 500
                         },
                         {
-                            text: "Type Route ...",
-                            animation: "animate__fadeIn",
-                            duration: 1500
-                        }
-                    ]
+                            text: "apply your brand identity",
+                            duration: 1800
+                        },
+                    ],
+                    spacing: "2rem",
+                },
+
+                // Video
+                {
+                    type: "text",
+                    text: "Free and open source software",
+                    duration: 800
                 },
                 {
                     type: "text",
-                    text: "MUI support",
-                    duration: 1000
-                },
-                //Video MUI
-                {
-                    type: "text",
-                    text: "Three shakable",
-                    duration: 1000
+                    text: "Made with ❤️",
+                    duration: 800
                 },
                 {
                     type: "text",
-                    text: "CSS in JS",
-                    duration: 1000
+                    text: "by the 🇫🇷 public service",
+                    duration: 800
                 },
                 {
                     type: "text",
-                    text: "i18n",
-                    duration: 1000
+                    text: "Try it today",
+                    duration: 800
                 },
                 {
-                    type: "text",
-                    text: "@codegouvfr/react-dsfr",
-                    animation: "animate__fadeIn",
-                    duration: 3000
+                    type: "image",
+                    duration: 3000,
+                    imgUrl: onyxiaLogoUrl,
+                    width: 200,
                 },
                 {
                     type: "music credentials",
@@ -286,7 +269,7 @@ function App() {
                     duration: 2000,
                     effect: () => {
 
-                        setIsDarkModeEnabled(true);
+                        //setIsDarkModeEnabled(true);
 
                     }
                 },

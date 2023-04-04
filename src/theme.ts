@@ -7,7 +7,7 @@ import { createIconButton } from "onyxia-ui/IconButton";
 import { createButton } from "onyxia-ui/Button";
 import { createText } from "onyxia-ui/Text";
 import type { Param0 } from "tsafe";
-import { createMakeStyles } from "tss-react/compat";
+import { createMakeStyles } from "onyxia-ui/tss";
 import { createOnyxiaSplashScreenLogo } from "onyxia-ui/lib/SplashScreen";
 import type { ThemeProviderProps } from "onyxia-ui";
 //Import icons from https://material-ui.com/components/material-icons/ that you plan to use
