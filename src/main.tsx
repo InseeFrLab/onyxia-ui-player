@@ -131,8 +131,8 @@ function App() {
                     type: "bullet points",
                     bulletPoints: [
                         {
-                            text: <>An intuitive <Focus> UI</Focus></>,
-                            duration: 1000
+                            text: ({ isVisible }) => <>An intuitive <Focus className={!isVisible ? undefined : "animate__animated animate__pulse"}>UI</Focus></>,
+                            duration: 700
                         },
                         {
                             text: "explaining what's going on",
