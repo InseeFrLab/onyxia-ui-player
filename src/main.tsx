@@ -43,16 +43,10 @@ function Focus(props: { children: React.ReactNode;  }) {
 
 function App() {
 
-    const { css, theme } = useStyles();
-
     const { setIsDarkModeEnabled } = useIsDarkModeEnabled();
 
     useEffect(
-        () => {
-
-            setIsDarkModeEnabled(false);
-
-        },
+        () => { setIsDarkModeEnabled(false); },
         []
     );
 
@@ -274,7 +268,7 @@ function App() {
                     type: "image",
                     duration: 3000,
                     imgUrl: onyxiaLogoUrl,
-                    width: 200,
+                    width: 300,
                     
                 }
             ]}
