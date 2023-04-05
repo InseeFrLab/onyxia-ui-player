@@ -49,10 +49,12 @@ export function Player(props: PlayerProps) {
 
 			const cleanup = item.effect?.();
 
-			if (index === items.length - 1) {
-				return cleanup;
-			}
+			const safeCleanup = ()=> { requestAnimationFrame(()=> cleanup?.()) };
 
+
+			if (index === items.length - 1) {
+				return safeCleanup;
+			}
 
 			setTimeout(
 				incrementIndex,
@@ -61,7 +63,7 @@ export function Player(props: PlayerProps) {
 					item.duration
 			);
 
-			return cleanup;
+			return safeCleanup;
 
 		},
 		[index]

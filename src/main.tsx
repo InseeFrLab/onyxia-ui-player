@@ -23,16 +23,22 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     </ThemeProvider>
 );
 
-function Focus(props: { children: React.ReactNode; color: string; }){
+function Focus(props: { children: React.ReactNode;  }) {
 
-    const { children, color } = props;
+    const { children } = props;
 
-    const { css, theme } = useStyles();
+    const { cx, css, theme } = useStyles();
 
     return (
-        <span className={css({ color })} >{children}</span>
+        <span className={cx(
+            //"animate__animated",
+            //"animate__pulse",
+            css({
+                color: theme.colors.useCases.typography.textFocus,
+                "display": "inline-block"
+            }))} >{children}</span>
     );
-    
+
 }
 
 function App() {
@@ -56,7 +62,7 @@ function App() {
                 {
                     type: "text",
                     text: "INSEE",
-                    duration: 400
+                    duration: 500
                 },
                 {
                     type: "text",
@@ -65,8 +71,8 @@ function App() {
                 },
                 {
                     type: "text",
-                    text: "CodeGouv 🇫🇷",
-                    duration: 400
+                    text: "CodeGouv🇫🇷",
+                    duration: 500
                 },
                 {
                     type: "text",
@@ -86,8 +92,7 @@ function App() {
                             duration: 500
                         },
                         {
-                            text: <>for all your <Focus color={theme.colors.useCases.typography.textFocus}>data</Focus> needs</>,
-                            animation: "animate__fadeIn",
+                            text: <>for all your <Focus>data</Focus> needs</>,
                             duration: 1800
                         },
                     ],
@@ -95,7 +100,7 @@ function App() {
                 // Video
                 {
                     type: "text",
-                    text: "Built on top standards",
+                    text: "Built on top standards...",
                     duration: 1000
                 },
                 {
@@ -107,18 +112,22 @@ function App() {
                         },
                         {
                             text: "Helm",
-                            duration: 400
+                            animation: "animate__fadeIn",
+                            duration: 400,
                         },
                         {
                             text: "S3",
+                            animation: "animate__fadeIn",
                             duration: 400
                         },
                         {
                             text: "OIDC",
+                            animation: "animate__fadeIn",
                             duration: 400
                         },
                         {
                             text: "Vault",
+                            animation: "animate__fadeIn",
                             duration: 1800
                         },
                     ]
@@ -127,11 +136,11 @@ function App() {
                     type: "bullet points",
                     bulletPoints: [
                         {
-                            text: "An intuitive UI...",
+                            text: <>An intuitive <Focus> UI</Focus></>,
                             duration: 1000
                         },
                         {
-                            text: "...that shows what's going on",
+                            text: "explaining what's going on",
                             animation: "animate__fadeIn",
                             duration: 1800
                         }
@@ -156,9 +165,9 @@ function App() {
                             animation: "animate__pulse"
                         },
                         {
-                            text: <Focus color={theme.colors.useCases.typography.textFocus}>GPU</Focus>,
-                            duration: 1000,
-                            animation: "animate__pulse"
+                            text: <Focus>GPU</Focus>,
+                            duration: 1500,
+                            animation: "animate__tada"
                         },
                     ],
                 },
@@ -171,7 +180,7 @@ function App() {
                             duration: 500
                         },
                         {
-                            text: "Spawn new containers on demand",
+                            text: "spawn containers on demand",
                             animation: "animate__fadeIn",
                             duration: 1800
                         },
@@ -186,77 +195,75 @@ function App() {
                             duration: 500
                         },
                         {
-                            text: "OVH",
-                            duration: 500
+                            text: <>OVH, AWS, GCP, Azure... OR...</>,
+                            animation: "animate__fadeIn",
+                            duration: 1000
                         },
                         {
-                            text: "AWS",
-                            duration: 500
-                        },
-                        {
-                            text: "Azure",
+                            text: <Focus>On premise</Focus>,
+                            animation: "animate__fadeIn",
                             duration: 1800
-                        }
+                        },
                     ],
-                },
-                {
-                    type: "text",
-                    text: "Or...",
-                    animation: "animate__fadeIn",
-                    duration: 1000
                 },
                 {
                     type: "bullet points",
                     bulletPoints: [
                         {
-                            text: "Break free from GAFAM hyperscalers",
-                            duration: 1000
+                            text: "Unleash the potential of your infrastructure",
+                            animation: "animate__fadeIn",
+                            duration: 1800
                         },
                         {
-                            text: "deploy on premise",
-                            duration: 1000
-                        },
-                        {
-                            text: "and unleash the full potential of your infrastructure",
+                            text: "break free from GAFAM hyperscalers",
+                            animation: "animate__fadeIn",
                             duration: 1800
                         },
                     ],
                 },
-
-
                 {
                     type: "bullet points",
                     bulletPoints: [
                         {
                             text: "Customize your instance",
-                            duration: 500
+                            duration: 1000
                         },
                         {
-                            text: "Extends the built-in catalog of tools",
-                            duration: 500
+                            text: "use your branding",
+                            duration: 1000
                         },
                         {
-                            text: "apply your brand identity",
+                            text: "extends the catalog",
                             duration: 1800
                         },
                     ],
+                    effect: ()=> {
+
+                        setTimeout(() => {
+
+                            setIsDarkModeEnabled(true);
+
+                        }, 1500);
+
+                        return ()=> setIsDarkModeEnabled(false);
+                    }
                 },
 
                 // Video
                 {
                     type: "text",
                     text: "Free and open source software",
-                    duration: 800
+                    duration: 1000
                 },
                 {
                     type: "text",
                     text: "Made with ❤️",
-                    duration: 800
+                    duration: 1000
                 },
                 {
                     type: "text",
                     text: "by the 🇫🇷 public service",
-                    duration: 800
+                    duration: 1000
                 },
                 {
                     type: "text",
@@ -268,6 +275,7 @@ function App() {
                     duration: 3000,
                     imgUrl: onyxiaLogoUrl,
                     width: 200,
+                    
                 }
             ]}
         />
