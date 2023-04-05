@@ -8,7 +8,7 @@ import { useConstCallback } from "powerhooks/useConstCallback";
 
 export type BulletPointsProps = {
 	bulletPoints: {
-		text: NonNullable<ReactNode>;
+		text: NonNullable<ReactNode> | ((params: { isVisible: boolean; }) => NonNullable<ReactNode>);
 		animation?: string;
 	}[];
 	currentIndex: number;
@@ -45,9 +45,8 @@ export function BulletPoints(props: BulletPointsProps) {
 						thisBulletPointIndex={i}
 						evtCurrentIndex={evtCurrentIndex}
 						animation={animation}
-					>
-						{text}
-					</BulletPoint>
+						text={text}
+					/>
 				)}
 			</div>
 		</div>
@@ -56,25 +55,25 @@ export function BulletPoints(props: BulletPointsProps) {
 
 }
 
-const  BulletPoint = memo((
+const BulletPoint = memo((
 	props: {
 		className: string;
 		thisBulletPointIndex: number;
 		evtCurrentIndex: StatefulReadonlyEvt<number>;
 		animation: string | undefined;
-		children: NonNullable<ReactNode>;
+		text: NonNullable<ReactNode> | ((params: { isVisible: boolean; }) => NonNullable<ReactNode>);
 	}
 ) => {
 
 	const {
 		className,
 		thisBulletPointIndex, evtCurrentIndex, animation,
-		children
+		text,
 	} = props;
 
 	const { cx, css } = useStyles();
 
-	const getDynamicClassName = useConstCallback((params: { currentIndex: number; })=>{
+	const getDynamicClassName = useConstCallback((params: { currentIndex: number; }) => {
 		const { currentIndex } = params;
 
 		const isVisible = currentIndex >= thisBulletPointIndex;
@@ -98,11 +97,11 @@ const  BulletPoint = memo((
 
 				const newDynamicClassName = getDynamicClassName({ currentIndex });
 
-				if( newDynamicClassName === evtDynamicClassName.state ){
+				if (newDynamicClassName === evtDynamicClassName.state) {
 					return;
 				}
 
-				requestAnimationFrame(()=> evtDynamicClassName.state =newDynamicClassName);
+				requestAnimationFrame(() => evtDynamicClassName.state = newDynamicClassName);
 
 			});
 
@@ -115,7 +114,8 @@ const  BulletPoint = memo((
 			typo="page heading"
 			className={cx("animate__animated", evtDynamicClassName.state, className)}
 		>
-			{children}
+
+			{typeof text === "function" ? text({ "isVisible": evtCurrentIndex.state === thisBulletPointIndex }) : text}
 		</Text>
 	);
 

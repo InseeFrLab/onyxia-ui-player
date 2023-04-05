@@ -23,20 +23,18 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     </ThemeProvider>
 );
 
-function Focus(props: { children: React.ReactNode;  }) {
+function Focus(props: { className?: string; children: React.ReactNode; }) {
 
-    const { children } = props;
+    const { className, children } = props;
 
     const { cx, css, theme } = useStyles();
 
     return (
         <span className={cx(
-            //"animate__animated",
-            //"animate__pulse",
             css({
                 color: theme.colors.useCases.typography.textFocus,
                 "display": "inline-block"
-            }))} >{children}</span>
+            }), className)} >{children}</span>
     );
 
 }
@@ -44,6 +42,8 @@ function Focus(props: { children: React.ReactNode;  }) {
 function App() {
 
     const { setIsDarkModeEnabled } = useIsDarkModeEnabled();
+
+    const { css } = useStyles();
 
     useEffect(
         () => { setIsDarkModeEnabled(false); },
@@ -86,7 +86,8 @@ function App() {
                             duration: 500
                         },
                         {
-                            text: <>for all your <Focus>data</Focus> needs</>,
+                            text: ({ isVisible }) => <>for all your <Focus className={!isVisible? undefined : "animate__animated animate__pulse"}>data</Focus> needs</>,
+                            animation: "animate__fadeIn",
                             duration: 1800
                         },
                     ],
@@ -195,7 +196,7 @@ function App() {
                         },
                         {
                             text: <Focus>On premise</Focus>,
-                            animation: "animate__fadeIn",
+                            animation: "animate__pulse",
                             duration: 1800
                         },
                     ],
