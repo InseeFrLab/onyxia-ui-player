@@ -13,6 +13,8 @@ Side tools that I use:
 - [Rotato](https://rotato.app/) (MacOS only): A tool to generate 3D rendered device playing your screen cap.  
 
 ```
+git clone https://github.com/InseeFrLab/onyxia-ui-player
+cd onyxia-ui-player
 yarn
 yarn dev
 ```

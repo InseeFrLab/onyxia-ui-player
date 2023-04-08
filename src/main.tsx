@@ -43,7 +43,7 @@ function App() {
 
     const { setIsDarkModeEnabled } = useIsDarkModeEnabled();
 
-    const { css } = useStyles();
+    const { css, cx } = useStyles();
 
     useEffect(
         () => { setIsDarkModeEnabled(false); },
@@ -52,6 +52,8 @@ function App() {
 
     return (
         <Player
+            specificIndex={5}
+
             items={[
                 {
                     type: "text",
@@ -65,7 +67,7 @@ function App() {
                 },
                 {
                     type: "text",
-                    text: "CodeGouv🇫🇷",
+                    text: "CodeGouv 🇫🇷",
                     duration: 500
                 },
                 {
@@ -86,7 +88,7 @@ function App() {
                             duration: 500
                         },
                         {
-                            text: ({ isVisible }) => <>for all your <Focus className={!isVisible? undefined : "animate__animated animate__pulse"}>data</Focus> needs</>,
+                            text: ({ isVisible }) => <>for all your <Focus className={!isVisible? undefined : cx("animate__animated", "animate__pulse", css({ animationDuration: "700ms", animationDelay: "200ms" }))}>data</Focus> needs</>,
                             animation: "animate__fadeIn",
                             duration: 1800
                         },
@@ -191,12 +193,10 @@ function App() {
                         },
                         {
                             text: <>OVH, AWS, GCP, Azure... OR...</>,
-                            animation: "animate__fadeIn",
                             duration: 1000
                         },
                         {
                             text: <Focus>On premise</Focus>,
-                            animation: "animate__pulse",
                             duration: 1800
                         },
                     ],
@@ -234,7 +234,11 @@ function App() {
                     ],
                     effect: ()=> {
 
+                        console.log("ok");
+
                         setTimeout(() => {
+
+                            console.log("wesh!");
 
                             setIsDarkModeEnabled(true);
 
