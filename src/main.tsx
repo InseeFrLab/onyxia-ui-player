@@ -52,8 +52,7 @@ function App() {
 
     return (
         <Player
-            specificIndex={5}
-
+            //specificIndex={5}
             items={[
                 {
                     type: "text",
