@@ -3,8 +3,7 @@
 import { useReducer, useEffect, EffectCallback, useState } from "react";
 import type { ScreenProps } from "./Screen";
 import { Screen } from "./Screen";
-import { GlobalStyles } from "onyxia-ui/tss";
-
+import { GlobalStyles } from "tss-react";
 
 export type PlayerProps = {
 	items: PlayerProps.Item[];

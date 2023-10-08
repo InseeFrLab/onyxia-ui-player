@@ -6,21 +6,22 @@ import { Player } from "./Player";
 import { useStyles, ThemeProvider } from "./theme";
 import { useIsDarkModeEnabled } from "onyxia-ui";
 import onyxiaLogoUrl from "./onyxia-logo.png";
+import { enableScreenScaler } from "screen-scaler/react";
+import { GlobalStyles } from "tss-react";
+
+const { ScreenScalerOutOfRangeFallbackProvider } = enableScreenScaler({
+    "rootDivId": "root",
+    "targetWindowInnerWidth": 1080
+});
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-    <ThemeProvider
-        getViewPortConfig={
-            () => {
-                return {
-                    targetWindowInnerWidth: 1080,
-                    //This is for zooming of de-zooming globally, the smaller the more zoom.
-                    targetBrowserFontSizeFactor: 2
-                };
-            }
-        }
+    <ScreenScalerOutOfRangeFallbackProvider
+        fallback={<h1>Please Rotate your phone, this app does not render well in portrait mode.</h1>}
     >
-        <App />
-    </ThemeProvider>
+        <ThemeProvider>
+            <App />
+        </ThemeProvider>
+    </ScreenScalerOutOfRangeFallbackProvider>
 );
 
 function Focus(props: { className?: string; children: React.ReactNode; }) {
@@ -51,9 +52,22 @@ function App() {
     );
 
     return (
+        <>
+        <GlobalStyles
+        styles={{
+            "html": {
+                "fontSize": "32px"
+            },
+        }}
+        />
         <Player
             //specificIndex={5}
             items={[
+                {
+                    type: "text",
+                    text: "...",
+                    duration: 1000
+                },
                 {
                     type: "text",
                     text: "INSEE",
@@ -87,7 +101,7 @@ function App() {
                             duration: 500
                         },
                         {
-                            text: ({ isVisible }) => <>for all your <Focus className={!isVisible? undefined : cx("animate__animated", "animate__pulse", css({ animationDuration: "700ms", animationDelay: "200ms" }))}>data</Focus> needs</>,
+                            text: ({ isVisible }) => <>for all your <Focus className={!isVisible ? undefined : cx("animate__animated", "animate__pulse", css({ animationDuration: "700ms", animationDelay: "200ms" }))}>data</Focus> needs</>,
                             animation: "animate__fadeIn",
                             duration: 1800
                         },
@@ -231,7 +245,7 @@ function App() {
                             duration: 1800
                         },
                     ],
-                    effect: ()=> {
+                    effect: () => {
 
                         console.log("ok");
 
@@ -243,7 +257,7 @@ function App() {
 
                         }, 1500);
 
-                        return ()=> setIsDarkModeEnabled(false);
+                        return () => setIsDarkModeEnabled(false);
                     }
                 },
 
@@ -273,10 +287,11 @@ function App() {
                     duration: 3000,
                     imgUrl: onyxiaLogoUrl,
                     width: 300,
-                    
+
                 }
             ]}
         />
+        </>
     );
 
 }
